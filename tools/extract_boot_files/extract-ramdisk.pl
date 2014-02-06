@@ -29,24 +29,12 @@ my($ram1Addr) = (1 + $kernelSizeInPages) * $pageSize;
 
 my($ram1) = substr($bootimg, $ram1Addr, $ram1Size);
 
-my $compressformat = "gz";
-my $compressprogram = "gzip -d -c";
-
-if (substr($ram1, 0, 2) eq "\x1F\x8B")
+if (substr($ram1, 0, 2) ne "\x1F\x8B")
 {
-       $compressformat = "gz";
-       $compressprogram = "gzip -d -c";
-}
-elsif (substr($ram1, 0, 2) eq "\x02\x21")
-{
-       $compressformat = "lz4";
-       $compressprogram = "lz4c -d";
-}
-else{
-	die "The boot image does not appear to contain a valid gzip or lz4 file";
+	die "The boot image does not appear to contain a valid gzip file";
 }
 
-open (RAM1FILE, ">$ARGV[0]-ramdisk.cpio.$compressformat");
+open (RAM1FILE, ">$ARGV[0]-ramdisk.cpio.gz");
 binmode(RAM1FILE);
 print RAM1FILE $ram1 or die;
 close RAM1FILE;
@@ -58,5 +46,5 @@ if (-e "$ARGV[0]-ramdisk") {
 
 mkdir "$ARGV[0]-ramdisk" or die;
 chdir "$ARGV[0]-ramdisk" or die;
-system ("$compressprogram ../$ARGV[0]-ramdisk.cpio.$compressformat | cpio -i");
-system ("rm -f ../$ARGV[0]-ramdisk.cpio.$compressformat");
+system ("gzip -d -c ../$ARGV[0]-ramdisk.cpio.gz | cpio -i");
+system ("rm -f ../$ARGV[0]-ramdisk.cpio.gz");

@@ -14,10 +14,11 @@ current_ver=$1
 
 echo 
 echo "============================================================"
-echo " Android Kitchen $current_ver - by dsixda (xda-developers.com)"
+echo " Original Android Kitchen - by dsixda (xda-developers.com)"
+echo " Update Version $version by javilonas (esp-desarrolladores.com)"
 echo "============================================================"
 echo
-echo "About the Kitchen"
+echo "About the Kitchen Original"
 echo
 echo "------------------------------------------------------------"
 echo
