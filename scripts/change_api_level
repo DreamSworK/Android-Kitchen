@@ -26,6 +26,7 @@ echo
 echo "Each API level corresponds to at least one Android OS version."
 echo
 echo "e.g."
+echo "      Android 5.0         = API Level 20"
 echo "      Android 4.4.x       = API Level 19"
 echo "      Android 4.3         = API Level 18"
 echo "      Android 4.2-4.2.2   = API Level 17"
