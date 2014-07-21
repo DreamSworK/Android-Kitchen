@@ -52,7 +52,7 @@ fi
 scripts/convert_to_unix tools/nano_files/sysrw
 scripts/convert_to_unix tools/nano_files/sysro
 
-cd WORKING_*
+cd WORKING_* 2>&1 > /dev/null
 echo
 
 sys_path=`find . -name sysrw`
@@ -71,7 +71,7 @@ else
   echo "Found $sys_path"
 fi
 
-cd ..
+cd .. 2>&1 > /dev/null
 echo
 scripts/add_sysrorw_to_update_script
 
@@ -111,7 +111,7 @@ else
   if [ `grep -c TERMINFO init.rc` == 1 ]
   then
     echo "TERMINFO already defined in init.rc"
-    cd ../..
+    cd ../.. 2>&1 > /dev/null
     rm -rf BOOT-EXTRACTED
 
   else
@@ -126,25 +126,25 @@ else
     if [ "`grep TERMINFO init.rc`" == "" ]
     then
       echo "Error: Could not update init.rc!"
-      cd ../..
+      cd ../.. 2>&1 > /dev/null
       rm -rf BOOT-EXTRACTED
       exit 0
     fi
 
-    cd ../..
+    cd ../.. 2>&1 > /dev/null
     scripts/build_boot_img
 
     echo
     echo "Adding /system/etc/terminfo ..."
     echo
 
-    cd WORKING_*
+    cd WORKING_* 2>&1 > /dev/null
     mkdir -p system/etc/terminfo
     cp ../tools/nano_files/terminfo.zip system/etc/terminfo/
     cd system/etc/terminfo
     unzip terminfo.zip
     rm terminfo.zip
-    cd ../../../..
+    cd ../../../.. 2>&1 > /dev/null
   fi
 
   echo
@@ -154,9 +154,9 @@ else
   
   if [ "$res" == "0" ] 
   then
-    cd WORKING_*
+    cd WORKING_* 2>&1 > /dev/null
     cp -fv ../tools/nano_files/nano system/xbin/
-    cd ..
+    cd .. 2>&1 > /dev/null
   else 
     echo "Found nano binary"
   fi
