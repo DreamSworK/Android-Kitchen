@@ -1,2 +1,3 @@
-busybox mount -o rw,remount /system
+#!/system/bin/sh
 
+mount -o rw,remount /system;
