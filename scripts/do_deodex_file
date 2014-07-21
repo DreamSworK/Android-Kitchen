@@ -47,9 +47,9 @@ done
 
 if [ "$odex_file" == "Settings.apk" ]
 then
-    java_cmd="java -Xmx512m -jar baksmali.jar -d $bootclass_dir -x $odex_file"
+    java_cmd="java -Xmx512m -jar baksmali.jar -I -d $bootclass_dir -x $odex_file"
 else
-    java_cmd="java -Xmx512m -jar baksmali.jar -a $api_level -d $bootclass_dir -x $odex_file"
+    java_cmd="java -Xmx512m -jar baksmali.jar -a $api_level -I -d $bootclass_dir -x $odex_file"
 fi
 echo $java_cmd
 $java_cmd

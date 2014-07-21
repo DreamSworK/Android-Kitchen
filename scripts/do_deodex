@@ -214,9 +214,9 @@ do
 
   read enterChoice
 
-  list1=( app )
+  list1=( app priv-app )
   list2=( framework )
-  list3=( framework app )
+  list3=( framework app priv-app )
 
   if [ "$enterChoice" == "a" ]
   then
@@ -244,7 +244,7 @@ do
     # Backup
     #
 
-    folder_list=( framework app )
+    folder_list=( framework app priv-app )
     date_str=`date '+%m%d%y_%H%M%S'`
 
     for f in ${folder_list[@]}
