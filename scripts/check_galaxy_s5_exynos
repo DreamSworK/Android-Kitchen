@@ -10,15 +10,9 @@
 
 model=`scripts/get_build_prop_val ro.product.model`
 
-if [ -e "tools/samsung_files/model_variants/galaxy_s4/GT-I9500/$model" ]
+if [ -e "tools/samsung_files/model_variants/galaxy_s5/G900T/$model" ]
 then
   exit 1
 fi
-
-if [ -e "tools/samsung_files/model_variants/galaxy_s4/GT-I9505/$model" ]
-then
-  exit 1
-fi
-
 
 exit 0

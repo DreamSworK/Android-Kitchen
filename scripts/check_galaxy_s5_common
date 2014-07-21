@@ -8,17 +8,22 @@
 #
 ############################################################################
 
-model=`scripts/get_build_prop_val ro.product.model`
+my_model=`scripts/get_product_model`
 
-if [ -e "tools/samsung_files/model_variants/galaxy_s4/GT-I9500/$model" ]
-then
-  exit 1
-fi
+cd tools/samsung_files/model_variants/galaxy_s5
 
-if [ -e "tools/samsung_files/model_variants/galaxy_s4/GT-I9505/$model" ]
-then
-  exit 1
-fi
+for variant_name in `ls`
+do     
+   for model_name in `ls $variant_name` 
+   do
+      if [ "$model_name" == "$my_model" ]		
+      then
+        cd ../..
+        exit 1
+      fi
+   done
+done
 
+cd ../../../..
 
 exit 0
