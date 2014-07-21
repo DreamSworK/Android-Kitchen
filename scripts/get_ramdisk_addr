@@ -9,12 +9,12 @@
 ############################################################################
 
 
-cd WORKING_*
+cd WORKING_* 2>&1 > /dev/null
 
 temp=`od -A n -H -j 20 -N 4 boot.img | sed 's/ //g'`
 ramdisk_load_addr=0x$temp
 
-cd ..
+cd .. 2>&1 > /dev/null
 
 echo $ramdisk_load_addr
 

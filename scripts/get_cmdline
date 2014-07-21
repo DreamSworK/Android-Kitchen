@@ -15,7 +15,7 @@ then
   exit 0
 fi
 
-cd WORKING_*
+cd WORKING_* 2>&1 > /dev/null
 
 if [ ! -e boot.img ]
 then

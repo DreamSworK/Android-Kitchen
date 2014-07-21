@@ -24,15 +24,15 @@ then
     echo Working folder not found!
     exit 0
   fi
-  cd WORKING_*
+  cd WORKING_* 2>&1 > /dev/null
 else
-  cd $1
+  cd $1 2>&1 > /dev/null
 fi
 
 
 boot_img_size=`ls -lh boot.img | sed -e 's/.* [ ]*\([0-9]*\.[0-9]*[MK]\) .*/\1/g'`
 
-cd $base_dir
+cd $base_dir 2>&1 > /dev/null
 
 echo $boot_img_size
 
