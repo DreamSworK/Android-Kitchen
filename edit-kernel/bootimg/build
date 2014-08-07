@@ -1,0 +1,65 @@
+#!/bin/bash
+DIR=$(cd $(dirname "$0"); pwd)
+cd $DIR
+
+rm -f initrd.img zImage *.cfg boot.img
+
+
+if [ ! $1 -o ! $2 ]
+then
+	if [ -e  ../../input/zImage -a -e ../../input/initrd.img ]
+	then
+		cp ../../input/zImage ./zImage
+		cp ../../input/initrd.img ./initrd.img
+		
+	else
+		echo "-------------ERROR-----------------"
+		echo "image and ramdisk not found in input folder"
+		exit
+	fi
+	
+else
+	cp $1 ./zImage
+	cp $2 ./initrd.img
+fi
+
+echo "================================"
+echo "The following saved configurations were found in your system"
+echo "-------"
+ls -1 ./bootimg-configs/
+echo "-------"
+
+echo ""
+echo "Type the name of the configuration file you want to use and press [Enter] to contiue"
+read BOOT_CONFIG
+if [ -e ./bootimg-configs/$BOOT_CONFIG ]
+then
+	. bootimg-configs/$BOOT_CONFIG
+else
+	echo "No such configuration found"
+	echo "please enter configurations manually"
+	read -p " base = " BASE
+	read -p " cmdline = " CMDLINE
+fi
+#####################################################done till here
+ARCH=$(uname -s).$(uname -m)
+
+if [ ! -e ./mkbootimg.$ARCH ]
+then
+	echo "=================================="
+	echo " mkbootimg not found on your system "
+	echo " I will compile it for you "
+	echo " please ensure you have gcc installed"
+	read -p "Press [Enter] to continue"
+	gcc -c rsa.c
+	gcc -c sha.c
+	gcc rsa.o sha.o mkbootimg.c -w -o mkbootimg.$ARCH
+	rm -f *.o
+fi
+./mkbootimg.$ARCH --cmdline "$CMDLINE" --base $BASE --kernel ./zImage --ramdisk ./initrd.img -o ./boot.img
+
+
+
+rm -f zImage initrd.img
+mv -f boot.img ../../output/.
+echo "Find compiled boot.img inside output folder"

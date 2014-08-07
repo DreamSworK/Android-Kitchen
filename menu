@@ -88,6 +88,7 @@ do
   echo " 99 - Build ROM from working folder"
   echo
   echo "  u - Kitchen Info/Update/Donate"
+  echo "  k - Kernel tools"
   echo "  x - Exit"
   echo
   echo 
@@ -114,6 +115,7 @@ do
       00) scripts/menu_legacy $version; continue;;
       99) scripts/build_rom;;
       u) scripts/about $version; continue;;
+      k) ./kernel-menu ;;
       x) scripts/init_kitchen; clear; echo; echo "Goodbye."; echo; exit 1;;
       *) echo "Invalid option"; continue;;
     esac
