@@ -1,0 +1,7 @@
+#!/bin/bash
+if [ -e init.rc ]
+then
+   grep BOOTCLASSPATH init.rc | awk '{print $3}'  | sed 's/:/\n/g'
+fi
+
+

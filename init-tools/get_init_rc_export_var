@@ -1,0 +1,8 @@
+#!/bin/bash
+if [ -e init.rc ]
+then
+   EXPORT_STR=`grep export init.rc | awk '{print $2}'`
+   echo $EXPORT_STR
+fi
+
+
