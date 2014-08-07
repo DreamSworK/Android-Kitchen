@@ -1,1 +1,1 @@
-BusyBox 1.22.1
+BusyBox v1.23.0
