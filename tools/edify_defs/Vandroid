@@ -1,0 +1,17 @@
+
+# WINGTECH ADVAN S4A
+
+change_mnt=yes
+
+param1=ext4
+param2=EMMC
+
+param1_sdcard=vfat
+param2_sdcard=MTD
+
+sys_mnt=\/dev\/block\/mmcblk0p4
+cache_mnt=\/dev\/block\/mmcblk0p5
+boot_mnt=\/dev\/bootimg
+data_mnt=\/dev\/block\/mmcblk0p6
+sdcard_mnt=\/dev\/block\/mmcblk1p1
+
