@@ -1,6 +1,7 @@
 ############################################################################
 #
-# Copyright (c) 2012 - dsixda (dislam@rocketmail.com)
+# Copyright (c) 2013 - dsixda (dislam@rocketmail.com) (last update 18 Sep 2013 - version 0.224)
+# Copyright (c) 2015 - Javilonas (admin@lonasdigital.com)
 #
 # Android Kitchen is 100% free.  This script file is intended for personal
 # and/or educational use only.  It may not be duplicated for monetary
@@ -22,9 +23,9 @@ echo "About the Kitchen Original"
 echo
 echo "------------------------------------------------------------"
 echo
-echo "  For help and discussion : http://bit.ly/aLKQaR"
-echo "  Follow dsixda on Twitter: http://www.twitter.com/dsixda"
-echo "  For Paypal donations    : http://bit.ly/blHTKy"
+echo "  For help and discussion : http://goo.gl/afWA0J"
+echo "  Follow Javilonas on Twitter: http://www.twitter.com/Javilonas"
+echo "  For Paypal donations    : http://goo.gl/p9Ik8d"
 echo
 echo "------------------------------------------------------------"
 echo
@@ -74,7 +75,7 @@ else
   fi
 
   
-  if [ $update == 0 ] 
+  if [ $update == 0 ]
   then
     echo "Latest version online is $latest_ver.  No update required."
   else
@@ -95,13 +96,13 @@ else
       exit 0
     fi
 
-    new_file=dsixda_Android_Kitchen_$latest_ver.zip
+    new_file=Android_Kitchen_$latest_ver.zip
 
     echo
     echo "Downloading $new_file ..."
     echo
 
-    url=https://github.com/dsixda/Android-Kitchen/archive/$latest_ver.zip
+    url=https://github.com/javilonas/Android-Kitchen/archive/$latest_ver.zip
 
     wget --no-check-certificate $url -O $new_file
     echo
