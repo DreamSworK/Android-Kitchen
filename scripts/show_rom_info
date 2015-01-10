@@ -83,9 +83,12 @@ is_galaxy_s3_exynos=$?
 echo -n "."
 scripts/check_gnote2_common
 is_gnote2_common=$?
+echo -n "."
 scripts/check_galaxy_s4_common
 is_galaxy_s4_common=$?
-
+echo -n "."
+scripts/check_galaxy_s5_common
+is_galaxy_s5_common=$?
 
 #
 # Check Android OS version
@@ -342,7 +345,7 @@ cd ..
 
 
 if [ "$is_galaxy_ss2" == "1" ] || [ "$is_galaxy_s3_exynos" == "1" ] || \
-     [ "$is_gnote2_common" == "1" ] || [ "$is_galaxy_s4_common" == "1" ]
+     [ "$is_gnote2_common" == "1" ] || [ "$is_galaxy_s4_common" == "1" ] || [ "$is_galaxy_s5_common" == "1" ]
 then
 
   #
