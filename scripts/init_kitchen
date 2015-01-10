@@ -1,6 +1,7 @@
 ############################################################################
 #
-# Copyright (c) 2012 - dsixda (dislam@rocketmail.com)
+# Copyright (c) 2013 - dsixda (dislam@rocketmail.com) (last update 18 Sep 2013 - version 0.224)
+# Copyright (c) 2015 - Javilonas (admin@lonasdigital.com)
 #
 # Android Kitchen is 100% free.  This script file is intended for personal
 # and/or educational use only.  It may not be duplicated for monetary
@@ -17,6 +18,7 @@ chmod 755 tools/samsung_files/unpack-initramfs
 chmod 755 scripts/plugins/*
 chmod 755 tools/deodex_files/api_level.txt
 rm -f deodex*.log
+rm -f knox
 rm -f symlinks.log
 rm -f tools/explore2fs_windows/explore*.txt
 rm -f tools/ext2read_windows/ext2*.log
