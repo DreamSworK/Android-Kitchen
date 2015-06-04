@@ -10,9 +10,5 @@ param1_sdcard=vfat
 
 sys_mnt=\/dev\/block\/platform\/sdhci-tegra.3\/by-name\/APP
 cache_mnt=\/dev\/block\/platform\/sdhci-tegra.3\/by-name\/CAC
-data_mnt=\/dev\/block\/\/platform\/sdhci-tegra.3\/by-name\/UDA
-boot_mnt=\/dev\/block\/\/platform\/sdhci-tegra.3\/by-name\/LNX
-
-
-fix_boot=yes
-
+data_mnt=\/dev\/block\/platform\/sdhci-tegra.3\/by-name\/UDA
+boot_mnt=\/dev\/block\/latform\/sdhci-tegra.3\/by-name\/LNX
