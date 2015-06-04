@@ -1,0 +1,18 @@
+
+# Highway 4G
+
+change_mnt=yes
+
+param1=ext4
+param2=EMMC
+
+param1_sdcard=vfat
+
+sys_mnt=\/dev\/block\/platform\/sdhci-tegra.3\/by-name\/APP
+cache_mnt=\/dev\/block\/platform\/sdhci-tegra.3\/by-name\/CAC
+data_mnt=\/dev\/block\/\/platform\/sdhci-tegra.3\/by-name\/UDA
+boot_mnt=\/dev\/block\/\/platform\/sdhci-tegra.3\/by-name\/LNX
+
+
+fix_boot=yes
+
