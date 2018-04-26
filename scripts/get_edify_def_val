@@ -27,7 +27,7 @@ then
 
 else
 
-  cd tools/edify_defs
+  cd tools/edify_defs 2>&1 > /dev/null
 
   str=^$param=
   grep_str=`grep -c $param $device`
@@ -46,7 +46,7 @@ else
     fi
   fi
 
-  cd $base_dir
+  cd $base_dir 2>&1 > /dev/null
 fi
 
 echo $value

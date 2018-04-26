@@ -1,6 +1,7 @@
 ############################################################################
 #
-# Copyright (c) 2012 - dsixda (dislam@rocketmail.com)
+# Copyright (c) 2013 - dsixda (dislam@rocketmail.com) (last update 18 Sep 2013 - version 0.224)
+# Copyright (c) 2015 - Javilonas (admin@lonasdigital.com)
 #
 # Android Kitchen is 100% free.  This script file is intended for personal
 # and/or educational use only.  It may not be duplicated for monetary
@@ -19,7 +20,8 @@ do
 
   echo 
   echo "============================================================"
-  echo " Android Kitchen $version - by dsixda (xda-developers.com)"
+  echo " Original Android Kitchen - by dsixda (xda-developers.com)"
+  echo " Update Version $version by javilonas (esp-desarrolladores.com)"
   echo "============================================================"
   echo
   echo "> LEGACY OPTIONS"

@@ -1,0 +1,20 @@
+
+# Samsung Galaxy S5 Plus SM-G901F
+
+change_mnt=yes
+
+param1=ext4
+param2=EMMC
+
+param1_sdcard=vfat
+param2_sdcard=MTD
+
+sys_mnt=\/dev\/block\/mmcblk0p24
+cache_mnt=\/dev\/block\/mmcblk0p25
+boot_mnt=\/dev\/block\/mmcblk0p17
+data_mnt=\/dev\/block\/mmcblk0p27
+sdcard_mnt=???
+
+modem_mnt=\/dev\/block\/mmcblk0p2
+
+fix_boot2=yes

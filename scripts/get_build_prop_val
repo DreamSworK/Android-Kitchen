@@ -19,9 +19,9 @@ base_dir=`pwd`
 
 if [ "$2" == "" ]
 then
-  cd WORKING_*
+  cd WORKING_* 2>&1 >/dev/null
 else
-  cd $2
+  cd $2 2>&1 >/dev/null
 fi
 
 if [ ! -e system/build.prop ]
@@ -30,7 +30,7 @@ then
 
 else
 
-  cd system
+  cd system 2>&1 >/dev/null
 
   str=^$1=
   grep_str=`grep -c $str build.prop`
@@ -50,7 +50,7 @@ else
   fi
 fi
 
-cd $base_dir
+cd $base_dir;
 
 echo $value
 

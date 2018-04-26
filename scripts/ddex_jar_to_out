@@ -1,0 +1,41 @@
+# $1 = file name
+declare -a jar_files
+count=0
+for jf in `ls -A original_update`
+do
+    if [ -f "original_update/$jf" ];then
+        fj=`echo "$jf" | grep ".jar$"`
+        if [ -n "$fj" ]; then
+            jar_files[$count]=$fj
+            count=`expr $count + 1`
+        fi
+    fi
+done
+j=0
+while [ $j -le `expr $count - 1` ]
+do
+    echo "$j ${jar_files[$j]}"
+    j=`expr $j + 1`
+done
+
+while :
+do
+    echo "input file number(0-`expr $count - 1`) or x to back:"
+    read opt
+    expr $opt "+" 10 &> /dev/null
+    if [ $? -eq 0 ];then
+        echo "select ${jar_files[$opt]}"
+        source_jar="original_update/${jar_files[$opt]}"
+        file_name=`basename $source_jar .jar`
+        mkdir -p out/$file_name
+        rm -rf out/$file_name/*
+        unzip -q $source_jar -d out/$file_name
+        tools/ddex_files/dex2jar/d2j-dex2jar.sh out/$file_name/classes.dex
+        mv classes-dex2jar.jar out/$file_name/$file_name.jar
+        tools/gui/jd-gui out/$file_name/$file_name.jar
+    elif [ $opt == "x" ];then
+        exit 1
+    else
+        echo "invilide params!"
+    fi
+done

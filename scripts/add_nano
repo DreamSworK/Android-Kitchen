@@ -49,16 +49,16 @@ fi
 # The regular 'mount' doesn't work for all devices
 #
 
-scripts/convert_to_unix tools/nano_files/sysrw
-scripts/convert_to_unix tools/nano_files/sysro
+scripts/convert_to_unix tools/nano_files/system/xbin/sysrw
+scripts/convert_to_unix tools/nano_files/system/xbin/sysro
 
-cd WORKING_*
+cd WORKING_* 2>&1 > /dev/null
 echo
 
 sys_path=`find . -name sysrw`
 if [ "$sys_path" == "" ] 
 then
-  cp -fv ../tools/nano_files/sysrw system/xbin/
+  cp -fv ../tools/nano_files/system/xbin/sysrw system/xbin/
 else 
   echo "Found $sys_path"
 fi
@@ -66,12 +66,12 @@ fi
 sys_path=`find . -name sysro`
 if [ "$sys_path" == "" ] 
 then
-  cp -fv ../tools/nano_files/sysro system/xbin/ 
+  cp -fv ../tools/nano_files/system/xbin/sysro system/xbin/ 
 else 
   echo "Found $sys_path"
 fi
 
-cd ..
+cd .. 2>&1 > /dev/null
 echo
 scripts/add_sysrorw_to_update_script
 
@@ -108,43 +108,41 @@ else
 
   echo
 
-  if [ `grep -c TERMINFO init.rc` == 1 ]
-  then
+SHOWTERM=`grep -c TERMINFO init.rc`
+
+  if [ $SHOWTERM == 1 ]; then
     echo "TERMINFO already defined in init.rc"
-    cd ../..
+    cd ../.. 2>&1 > /dev/null
     rm -rf BOOT-EXTRACTED
 
   else
     echo "Setting TERMINFO in init.rc ..."
-    perl -pi -e 's/    export PATH /    export TERMINFO \/system\/etc\/terminfo\n    export PATH /g' init.rc
-
-    if [ -e init.rc.bak ]
-    then
+    sed -i -e 's/export TERMINFO \/system\/etc\/terminfo/\n    export/' init.rc
+    if [ -e init.rc.bak ]; then
       rm -f init.rc.bak
     fi
 
-    if [ "`grep TERMINFO init.rc`" == "" ]
-    then
+    if [ "$SHOWTERM" != "0" ]; then
       echo "Error: Could not update init.rc!"
-      cd ../..
+      cd ../.. 2>&1 > /dev/null
       rm -rf BOOT-EXTRACTED
       exit 0
     fi
 
-    cd ../..
+    cd ../.. 2>&1 > /dev/null
     scripts/build_boot_img
 
     echo
     echo "Adding /system/etc/terminfo ..."
     echo
 
-    cd WORKING_*
+    cd WORKING_* 2>&1 > /dev/null
     mkdir -p system/etc/terminfo
     cp ../tools/nano_files/terminfo.zip system/etc/terminfo/
     cd system/etc/terminfo
     unzip terminfo.zip
     rm terminfo.zip
-    cd ../../../..
+    cd ../../../.. 2>&1 > /dev/null
   fi
 
   echo
@@ -154,9 +152,9 @@ else
   
   if [ "$res" == "0" ] 
   then
-    cd WORKING_*
-    cp -fv ../tools/nano_files/nano system/xbin/
-    cd ..
+    cd WORKING_* 2>&1 > /dev/null
+    cp -fv ../tools/nano_files/system/xbin/nano system/xbin/
+    cd .. 2>&1 > /dev/null
   else 
     echo "Found nano binary"
   fi

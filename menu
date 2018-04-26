@@ -2,7 +2,8 @@
 
 ############################################################################
 #
-# Copyright (c) 2013 - dsixda (dislam@rocketmail.com)
+# Copyright (c) 2013 - dsixda (dislam@rocketmail.com) (last update 18 Sep 2013 - version 0.224)
+# Copyright (c) 2015 - Javilonas (admin@lonasdigital.com)
 #
 # Android Kitchen is 100% free.  This script file is intended for personal
 # and/or educational use only.  It may not be duplicated for monetary
@@ -10,7 +11,7 @@
 #
 ############################################################################
 
-version=0.224
+version=0.239
 
 
 if [ ! -e menu ]
@@ -20,8 +21,8 @@ then
   echo "installed, otherwise the kitchen will have problems running the"
   echo "scripts.  After you 'cd' to the correct folder, start the kitchen"
   echo "with the ./menu command, NOT with any other command or method!"
-  exit 0
-fi
+  echo; sleep 3
+else
 
 dir_list=( original_update scripts tools )
 error_found=0
@@ -67,7 +68,8 @@ do
 
   echo 
   echo "============================================================"
-  echo " Android Kitchen $version - by dsixda (xda-developers.com)"
+  echo " Original Android Kitchen - by dsixda (xda-developers.com)"
+  echo " Update Version $version by javilonas (esp-desarrolladores.com)"
   echo "============================================================"
   echo 
   echo "> MAIN MENU"
@@ -80,6 +82,7 @@ do
   echo "  6 - Change wipe status of ROM"
   echo "  7 - Change name of ROM"
   echo "  8 - Show working folder information"
+  echo "  9 - Decompile a jar include classes.dex"
   echo 
   echo "  0 - ADVANCED OPTIONS"
   echo " 00 - LEGACY OPTIONS (old and rarely used)"
@@ -108,6 +111,7 @@ do
       6) scripts/change_wipe;;
       7) scripts/change_rom_name;;
       8) scripts/show_rom_info;;
+      9) scripts/ddex_jar_to_out;;
       0) scripts/menu_advanced $version; continue;;
       00) scripts/menu_legacy $version; continue;;
       99) scripts/build_rom;;
@@ -120,4 +124,5 @@ do
   scripts/press_enter
 
 done
+fi
 
